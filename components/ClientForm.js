@@ -24,19 +24,29 @@ export default function ClientForm() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const response = await fetch("/api/clients", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch("/api/clients", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    const result = await response.json();
+      const result = await response.json();
 
-    console.log("API response:", result);
+      console.log("API response:", result);
 
-    alert(result.message);
+      if (!response.ok) {
+        alert(result.message || "Error while creating client");
+        return;
+      }
+
+      alert(result.message);
+    } catch (error) {
+      console.error("Request error:", error);
+      alert("Network or server error while creating client.");
+    }
   }
 
   return (
