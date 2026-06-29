@@ -51,7 +51,7 @@ export default function ClientForm() {
           value={formData.name}
           onChange={handleChange}
           placeholder="Mario Rossi"
-          className="w-full text-black rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-slate-900"
+          className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-black outline-none focus:border-slate-900"
         />
       </div>
 
@@ -65,7 +65,7 @@ export default function ClientForm() {
           value={formData.email}
           onChange={handleChange}
           placeholder="mario@example.com"
-          className="w-full text-black rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-slate-900"
+          className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-black outline-none focus:border-slate-900"
         />
       </div>
 
@@ -79,7 +79,7 @@ export default function ClientForm() {
           value={formData.company}
           onChange={handleChange}
           placeholder="Rossi Srl"
-          className="w-full text-black rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-slate-900"
+          className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-black outline-none focus:border-slate-900"
         />
       </div>
 
@@ -91,7 +91,7 @@ export default function ClientForm() {
           name="status"
           value={formData.status}
           onChange={handleChange}
-          className="w-full text-black rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-slate-900"
+          className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-black outline-none focus:border-slate-900"
         >
           <option value="Active">Active</option>
           <option value="Prospect">Prospect</option>
@@ -109,7 +109,7 @@ export default function ClientForm() {
           value={formData.notes}
           onChange={handleChange}
           placeholder="Internal notes..."
-          className="w-full text-black rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-slate-900"
+          className="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-black outline-none focus:border-slate-900"
         />
       </div>
 
