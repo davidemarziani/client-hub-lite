@@ -9,6 +9,7 @@ export default async function ClientsPage() {
     },
   });
 
+  
   return (
     <main className="min-h-screen bg-slate-100 p-10">
       <section className="mx-auto max-w-5xl rounded-2xl bg-white p-8 shadow">
