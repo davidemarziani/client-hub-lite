@@ -1,16 +1,22 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+const initialFormData = {
+  name: "",
+  email: "",
+  company: "",
+  status: "Prospect",
+  notes: "",
+};
+
 export default function ClientForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    status: "Prospect",
-    notes: "",
-  });
+  const router = useRouter();
+
+  const [formData, setFormData] = useState(initialFormData);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -24,6 +30,8 @@ export default function ClientForm() {
   async function handleSubmit(event) {
     event.preventDefault();
 
+    setIsSubmitting(true);
+
     try {
       const response = await fetch("/api/clients", {
         method: "POST",
@@ -35,17 +43,20 @@ export default function ClientForm() {
 
       const result = await response.json();
 
-      console.log("API response:", result);
-
       if (!response.ok) {
         alert(result.message || "Error while creating client");
         return;
       }
 
-      alert(result.message);
+      setFormData(initialFormData);
+
+      router.push("/clients");
+      router.refresh();
     } catch (error) {
       console.error("Request error:", error);
       alert("Network or server error while creating client.");
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -133,9 +144,10 @@ export default function ClientForm() {
 
         <button
           type="submit"
-          className="rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white"
+          disabled={isSubmitting}
+          className="rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60"
         >
-          Save client
+          {isSubmitting ? "Saving..." : "Save client"}
         </button>
       </div>
     </form>
